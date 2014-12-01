@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                      http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+                      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	<!-- import mouse context -->
+	<import resource="mouse-context.xml"/>
+	<!-- import printer context here -->
+	<import resource="printer-context.xml"/>
+	<!-- add component scan for base package css.training.spring.computer -->
+	<context:component-scan base-package="css.training.spring.computer"/>
+	<!-- create bean for css.training.spring.computer.ComputerImpl with name  workstation1 -->
+	<!-- set the properties of computer object -->
+	<bean id="workstation1" class="css.training.spring.computer.ComputerImpl">
+		<!-- use USB Mouse -->
+		<property name="mouse" ref="USBMouse"/>
+		<!-- use laser printer -->
+		<property name="printer" ref="dotMtrx"/>
+	</bean>
+	
+	<bean id="parentComputer" abstract="true">
+		<!-- use USB Mouse -->
+		<property name="mouse" ref="wirelessMouse"/>
+		<!-- use laser printer -->
+		<property name="printer" ref="laser"/>
+	</bean>
+	
+	<!-- inherit properties from parent computer
+	<bean id="workstation2" class="css.training.spring.computer.ComputerImpl">
+
+	</bean>
+	 -->
+ </beans>

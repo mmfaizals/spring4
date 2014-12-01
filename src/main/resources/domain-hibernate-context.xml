@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                      http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+                      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                      http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
+	
+	<context:component-scan base-package="css.training.spring.domain"/>
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:database.sql" />
+	</jdbc:initialize-database>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="hibernateProperties" ref="hibernateProperties" />
+		<property name="dataSource" ref="dataSource"/>
+		<property name="namingStrategy" >
+			<bean class="org.hibernate.cfg.ImprovedNamingStrategy"/>
+		</property>
+		<property name="packagesToScan"
+			value="css.training.*.domain*,css.training.*.domain..*" />
+	</bean>
+     <bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+                <property name="properties">
+                        <props>
+                                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                                <prop key="hibernate.format_sql">false</prop>
+                                <prop key="hibernate.show_sql">false</prop>
+                                <prop key="hibernate.use_sql_comments">true</prop>
+                                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+                                <prop key="hibernate.hbm2ddl.auto">false</prop>
+                                <prop key="hibernate.bytecode.provider">javassist</prop>
+                                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+                        </props>
+                </property>
+        </bean>
+
+
+</beans>
