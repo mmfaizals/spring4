@@ -10,7 +10,7 @@
                       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- define bean for laser use name laser -->
-	<bean id="laser" class="css.training.spring.printer.Laser"></bean>
+	
 	<!-- define bean for dot matrix use id dotMtrx -->
-	<bean id="dotMtrx" class="css.training.spring.printer.DotMatrix"></bean>
+	
 </beans>

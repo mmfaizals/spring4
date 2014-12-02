@@ -9,13 +9,10 @@ import css.training.spring.printer.Printer;
 // make this as spring component
 public class PersonalizedComputer implements Computer {
 
-	@Autowired
-	@Qualifier("wirelessMouse")
+// wire wirelessMouse
 	private Mouse mouse;
 
 	// wire dot matrix printer
-	@Autowired
-	@Qualifier("dotMtrx")
 	private Printer print;
 
 	public void clickMouse() {

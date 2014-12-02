@@ -9,18 +9,18 @@
                       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
                       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	<!-- import mouse context -->
-	<import resource="mouse-context.xml"/>
+	
 	<!-- import printer context here -->
-	<import resource="printer-context.xml"/>
+	
 	<!-- add component scan for base package css.training.spring.computer -->
-	<context:component-scan base-package="css.training.spring.computer"/>
+	
 	<!-- create bean for css.training.spring.computer.ComputerImpl with name  workstation1 -->
-	<!-- set the properties of computer object -->
-	<bean id="workstation1" class="css.training.spring.computer.ComputerImpl">
+	<!-- wire the USB Mouse and dot Matrix printer-->
+	<bean>
 		<!-- use USB Mouse -->
-		<property name="mouse" ref="USBMouse"/>
+		
 		<!-- use laser printer -->
-		<property name="printer" ref="dotMtrx"/>
+		
 	</bean>
 	
 	<bean id="parentComputer" abstract="true">

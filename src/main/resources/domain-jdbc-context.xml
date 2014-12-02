@@ -11,18 +11,25 @@
                       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
                       http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
 	
-	<context:component-scan base-package="css.training.spring.domain"/>
-	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- scan package css.training.spring.domain for components using  context:component-scan namespace -->
+	
+	
+	<!-- add bean for jdbc.properties using context:property-placeholder namespace -->
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	
 	<jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="classpath:database.sql" />
 	</jdbc:initialize-database>
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-		<constructor-arg ref="dataSource"/>
+	
+	<!-- define a bean of type org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate with name  jdbcTemplate -->
+	<bean>
+		<!-- pass dataSource bean as constructor arg -->
+		
 	</bean>
 </beans>

@@ -11,24 +11,21 @@ import css.training.spring.computer.Computer;
 import css.training.spring.mouse.Mouse;
 import css.training.spring.printer.Printer;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:computer-context.xml" })
-public class Example04 {
+/**
+ * Run this Junit using SpringJUnit4ClassRunner.
+ * <p>
+ * use computer-context.xml as configuration file
+ * <p>
+ * wire a computer , wirelessMouse, and dot matrix printer
+ * <p>
+ * invoke methods on wired objects
+ */
 
-	@Autowired
-	private Computer comp;
-	@Autowired
-	@Qualifier("wirelessMouse")
-	private Mouse mouse;
-	@Autowired
-	@Qualifier("dotMtrx")
-	private Printer dotMtrx;
+public class Example04 {
 
 	@Test
 	public void testXML() {
-		mouse.rightClick();
-		dotMtrx.print();
-		comp.clickMouse();
+		// invoke methods on objects
 	}
 
 }

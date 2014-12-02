@@ -7,8 +7,7 @@ public class Example01 {
 	public static void main(String[] args) {
 		// create class path application context with beans defined in
 		// "printer-context.xml"
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
-				"printer-context.xml");
+		
 		// get the bean laser and invoke print on it
 
 		/**
@@ -20,7 +19,7 @@ public class Example01 {
 		 * change the scope to prototype get the bean multiple times and assign
 		 * it to different variables print the hex string
 		 */
-		ctx.close();
+		
 	}
 
 }

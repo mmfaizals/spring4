@@ -10,8 +10,6 @@ import css.training.spring.domain.Movie;
 import css.training.spring.domain.MovieDao;
 
 // make this class as spring service with transaction support
-@Service
-@Transactional
 class MovieServiceImpl implements MovieService {
 	// inject movie DAO
 	@Autowired

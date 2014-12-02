@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import css.training.spring.web.BeanParam;
 
-@Controller
-@RequestMapping("/form")
+// mark this class as MVC Controller
+//set request mapping uri to '/form'
+
 public class FormController {
-	@RequestMapping("/")
+	//set request mapping uri to '/'
 	public String showForm(Model model) {
 		BeanParam param = new BeanParam();
 		param.setParam1("I am Param1");
@@ -19,7 +20,7 @@ public class FormController {
 		return "form";
 	}
 
-	@RequestMapping("/submit")
+	//set request mapping uri to '/submit'
 	public String onSubmit(@ModelAttribute("param") BeanParam param, Model model) {
 		// set incoming bean param in model so it can be rendered
 		model.addAttribute("beanParam", param);

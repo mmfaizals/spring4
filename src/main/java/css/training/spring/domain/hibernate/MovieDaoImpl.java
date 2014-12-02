@@ -12,7 +12,7 @@ import css.training.spring.domain.Movie;
 import css.training.spring.domain.MovieDao;
 
 //make this impl as spring repository
-@Repository
+
 class MovieDaoImpl implements MovieDao {
 	@Autowired
 	private SessionFactory factory;

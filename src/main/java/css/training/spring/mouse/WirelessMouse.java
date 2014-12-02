@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 //make this class as spring component
-@Component
+
 class WirelessMouse implements Mouse {
 	public static final Logger logger = Logger.getLogger(WirelessMouse.class);
 
